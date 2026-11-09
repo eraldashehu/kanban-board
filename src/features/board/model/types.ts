@@ -20,9 +20,12 @@ export interface Task {
   assignee: string;
 }
 
+/** Every change to the board is one of these actions. */
 export type BoardAction =
-  | { type: 'add'; task: Task }
-  | { type: 'update'; task: Task }
-  | { type: 'delete'; id: string }
-  | { type: 'move'; id: string; column: ColumnId; beforeId?: string | null }
-  | { type: 'reset' };
+  | { type: 'task/add'; task: Task }
+  | { type: 'task/update'; task: Task }
+  | { type: 'task/delete'; id: string }
+  | { type: 'task/move'; id: string; column: ColumnId; beforeId?: string | null }
+  | { type: 'board/reset' };
+
+export type PriorityFilter = Priority | 'all';

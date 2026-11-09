@@ -1,4 +1,4 @@
-import type { ColumnDef, Priority, Task } from '../types';
+import type { ColumnDef, Priority, Task } from './types';
 
 export const COLUMNS: ColumnDef[] = [
   { id: 'todo', title: 'To do', limit: null },
@@ -7,10 +7,11 @@ export const COLUMNS: ColumnDef[] = [
   { id: 'done', title: 'Done', limit: null },
 ];
 
-export const PRIORITIES: Record<Priority, { label: string; color: string }> = {
-  high: { label: 'High', color: '#E5484D' },
-  medium: { label: 'Medium', color: '#F5A524' },
-  low: { label: 'Low', color: '#3E9B6E' },
+/** Ant Design preset color names, used by Tag and Badge. */
+export const PRIORITIES: Record<Priority, { label: string; color: 'red' | 'orange' | 'green' }> = {
+  high: { label: 'High', color: 'red' },
+  medium: { label: 'Medium', color: 'orange' },
+  low: { label: 'Low', color: 'green' },
 };
 
 export const PRIORITY_KEYS = Object.keys(PRIORITIES) as Priority[];
@@ -18,9 +19,9 @@ export const PRIORITY_KEYS = Object.keys(PRIORITIES) as Priority[];
 let counter = 0;
 export const newId = (): string => `t-${Date.now().toString(36)}-${(counter++).toString(36)}`;
 
-/** Date `n` days from today as YYYY-MM-DD, so demo due dates stay realistic. */
-const inDays = (n: number): string => {
-  const d = new Date();
+/** Date `n` days from `from` as YYYY-MM-DD, so demo due dates stay realistic. */
+export const inDays = (n: number, from = new Date()): string => {
+  const d = new Date(from);
   d.setDate(d.getDate() + n);
   return d.toISOString().slice(0, 10);
 };

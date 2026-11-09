@@ -1,9 +1,9 @@
 {
   "name": "kanban-board",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
-  "description": "Drag-and-drop Kanban board for planning team work, saved in the browser.",
+  "description": "Drag-and-drop Kanban board for planning team work, saved in the browser. Built with React, TypeScript and Ant Design.",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,6 +11,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.5.1",
+    "antd": "^5.22.0",
+    "dayjs": "^1.11.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
